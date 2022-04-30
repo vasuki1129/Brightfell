@@ -2,19 +2,49 @@
 //
 
 #include <iostream>
+#include <thread>
+#include "GraphicsContext.h"
+
+
+bool shouldRun = true;
+
+class GraphicsContext* context;
+
+void handleInput(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    {
+        shouldRun = false;
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+    }
+}
+
+void renderLoop()
+{
+    while (shouldRun)
+    {
+        context->processFrame();
+    }
+    glfwTerminate();
+}
+
+void gameLoop()
+{
+    while (shouldRun)
+    {
+
+    }
+    
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    context = new GraphicsContext(800,600,handleInput);
+
+    std::thread gameThread(gameLoop);
+    renderLoop();
+    gameThread.join();
+
+    delete context;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
