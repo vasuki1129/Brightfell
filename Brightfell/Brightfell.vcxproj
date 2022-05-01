@@ -143,10 +143,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Brightfell.cpp" />
+    <ClCompile Include="GameModule.cpp" />
     <ClCompile Include="GraphicsContext.cpp" />
+    <ClCompile Include="TestGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameModule.h" />
     <ClInclude Include="GraphicsContext.h" />
+    <ClInclude Include="TestGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
