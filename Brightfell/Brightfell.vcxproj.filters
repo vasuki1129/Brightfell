@@ -22,6 +22,27 @@
     <Filter Include="Source Files\engine\graphics">
       <UniqueIdentifier>{dbaeed10-ac88-4419-b928-cc3a1fdbbe4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{b74312d8-f440-490d-b0cd-49a513f69f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\gameplay">
+      <UniqueIdentifier>{a440d1a1-f24f-441e-aba1-937dffd11520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\inventory">
+      <UniqueIdentifier>{1f59efdd-d0f7-4927-8da2-f4ae88a81225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game\terrain">
+      <UniqueIdentifier>{2bafefdd-9e80-45bd-bee3-69dc042753ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{e4a85557-6928-48fc-9e85-097c203e2961}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game\inventory">
+      <UniqueIdentifier>{9b887ccb-2ba1-41cc-89be-683312351654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game\terrain">
+      <UniqueIdentifier>{430511b1-6c88-428e-aa8c-a8719c6cbbd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Brightfell.cpp">
@@ -31,20 +52,83 @@
       <Filter>Source Files\engine\graphics</Filter>
     </ClCompile>
     <ClCompile Include="GameModule.cpp">
+      <Filter>Source Files\engine\gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="TestGame.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\game\inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\game\inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="TerrainTile.cpp">
+      <Filter>Source Files\game\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldMap.cpp">
+      <Filter>Source Files\game\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="TestQuad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphicsContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameModule.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsContext.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="TestGame.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\game\inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\game\inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="TerrainTile.h">
+      <Filter>Header Files\game\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldMap.h">
+      <Filter>Header Files\game\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="TestQuad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

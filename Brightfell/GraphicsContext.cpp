@@ -5,7 +5,11 @@ void GraphicsContext::processFrame()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//Render here
+	//Render all the drawables in the queue
+	for (Drawable* currentDraw : renderQueue)
+	{
+		
+	}
 
 	glfwSwapBuffers(window);
 	glfwPollEvents();
