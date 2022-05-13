@@ -6,9 +6,25 @@ void GraphicsContext::processFrame()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	GLint p;
+	glValidateProgram(defaultShader->getId());
+	glGetProgramiv(defaultShader->getId(), GL_VALIDATE_STATUS, &p);
+
+	if (p == GL_TRUE) {
+		std::cout << "Validated Shader Successfully" << "\n";
+	}
+	else
+	{
+		std::cout << "Shader Validation Failed" << "\n";
+	}
+
+
 	//Render all the drawables in the queue
 	for (Drawable* currentDraw : renderQueue)
 	{
+
+
+
 		//buffer the vertex data
 		glBufferData(GL_ARRAY_BUFFER, currentDraw->geometry.size() * sizeof(Vertex), &currentDraw->geometry[0], GL_STATIC_DRAW);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, currentDraw->indices.size() * sizeof(unsigned int), &currentDraw->indices[0], GL_STATIC_DRAW);
@@ -16,20 +32,20 @@ void GraphicsContext::processFrame()
 		//setup the attrib ptr
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(1);
+		//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+		//glEnableVertexAttribArray(1);
 
 		//setup the uniforms
 		glm::mat4 model = currentDraw->getMatrix();
 		glm::mat4 cameraMatrix = currentCam->getMatrix();
 
 		//send the uniforms
-		int selector;
-		selector = glGetUniformLocation(defaultShader->getId(), "model");
-		glUniformMatrix4fv(selector, 1, GL_FALSE, glm::value_ptr(model));
+		//int selector;
+		//selector = glGetUniformLocation(defaultShader->getId(), "model");
+		//glUniformMatrix4fv(selector, 1, GL_FALSE, glm::value_ptr(model));
 
-		selector = glGetUniformLocation(defaultShader->getId(), "cameraMatrix");
-		glUniformMatrix4fv(selector, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
+		//selector = glGetUniformLocation(defaultShader->getId(), "cameraMatrix");
+		//glUniformMatrix4fv(selector, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
 
 
 		//draw

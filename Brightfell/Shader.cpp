@@ -15,8 +15,16 @@ Shader::Shader(std::string vertexSource, std::string fragmentSource)
 	glAttachShader(shaderId, fragShd);
 
 	glLinkProgram(shaderId);
+	int result;
+	glGetShaderiv(shaderId, GL_LINK_STATUS, &result);
+	if (result == GL_FALSE)
+	{
+		std::cout << "\nShader Link Failed\n";
+	}
+
 	glValidateProgram(shaderId);
 	GLint p;
+
 	glGetProgramiv(shaderId,GL_VALIDATE_STATUS, &p);
 
 	if (p == GL_TRUE) {
@@ -24,10 +32,15 @@ Shader::Shader(std::string vertexSource, std::string fragmentSource)
 	}
 	else
 	{
-		std::cout << "Shader Validation Failed" << "\n";
+		std::cout << "\nShader Validation Failed" << "\n";
+		char error[1024];
+		GLsizei length=0;
+		glGetProgramInfoLog(shaderId, 1024, &length, error);
+
+		std::cout << error << "\n";
 	}
 	
-
+	
 	glDeleteShader(vertexShd);
 	glDeleteShader(fragShd);
 }

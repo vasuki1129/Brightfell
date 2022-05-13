@@ -18,18 +18,41 @@ class Camera;
 class GraphicsContext
 {
 private:
-	const char* vertexShaderSource =
+	const char* vertexShaderSourceOL =
 		"#version 330 core\n"
 		"\n"
 		"layout(location = 0) in vec4 position;\n"
 		"layout(location = 1) in vec2 texCoord;\n"
-		"layout(location = 2) out vec2 tCoord;\n"
+		"//layout(location = 2) out vec2 tCoord;\n"
 		"\n"
 		"uniform mat4 model;\n"
 		"uniform mat4 cam;\n"
 		"void main() {\n"
 		"\n"
-		"	gl_Position = camera * model * position;\n"
+		"	gl_Position = cam * model * position;\n"
+		"}\n"
+		;
+
+	const char* vertexShaderSource =
+		"#version 330 core\n"
+		"\n"
+		"layout(location = 0) in vec3 position;\n"
+		"\n"
+		"void main() {\n"
+		"\n"
+		"	gl_Position = vec4(position, 1.0);\n"
+		"}\n"
+		;
+
+
+	const char* fragShaderSourceOL =
+		"#version 330 core\n"
+		"\n"
+		"layout(location = 0) out vec4 color;\n"
+		"//layout(location = 1) in vec3 tCoord;\n"
+		"\n"
+		"void main() {\n"
+		"	color = vec4(0.0,1.0,0.0,1.0);\n"
 		"}\n"
 		;
 
@@ -37,7 +60,6 @@ private:
 		"#version 330 core\n"
 		"\n"
 		"layout(location = 0) out vec4 color;\n"
-		"layout(location = 1) in vec3 tCoord;\n"
 		"\n"
 		"void main() {\n"
 		"	color = vec4(0.0,1.0,0.0,1.0);\n"
