@@ -10,10 +10,8 @@ struct Vertex
 	float xUv;
 	float yUv;
 
-	//normal
-	float xNormal;
-	float yNormal;
-	float zNormal;
 
+	Vertex(float x, float y, float z, float u, float v);
+	~Vertex();
 };
 

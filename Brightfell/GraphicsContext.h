@@ -9,17 +9,51 @@
 #include <vector>
 #include "Drawable.h"
 #include "Camera.h"
+#include "Shader.h"
+
 
 class Drawable;
 class Camera;
 
 class GraphicsContext
 {
+private:
+	const char* vertexShaderSource =
+		"#version 330 core\n"
+		"\n"
+		"layout(location = 0) in vec3 position;\n"
+		"layout(location = 1) in vec2 texCoord\n"
+		"\n"
+		"uniform mat4 model;\n"
+		"uniform mat4 view;\n"
+		"uniform mat4 projection;\n"
+		"void main() {\n"
+		"vec4 tPos = position(1.0f);\n"
+		"	gl_Position = projection * view * model * tPos;\n"
+		"}\n"
+		;
+
+	const char* fragShaderSource =
+		"#version 330 core\n"
+		"\n"
+		"layout(location = 0) out vec4 color;\n"
+		"\n"
+		"void main() {\n"
+		"	color = vec4(0.0,1.0,0.0,1.0);\n"
+		"}\n"
+		;
+
+
 public:
+
+	unsigned int vao;
+	unsigned int vbo;
+	unsigned int ibo;
+
 
 
 	std::vector<Drawable*> renderQueue;
-
+	Shader* defaultShader;
 
 	Camera* currentCam;
 
@@ -27,6 +61,9 @@ public:
 	void processFrame();
 	GraphicsContext(int width, int height, void (*inputHandler)(GLFWwindow*, int, int, int, int));
 	~GraphicsContext();
+
+	void registerDrawable(Drawable* drawable);
+
 
 };
 

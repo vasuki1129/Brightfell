@@ -150,6 +150,7 @@
     <ClCompile Include="GraphicsContext.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="TerrainTile.cpp" />
     <ClCompile Include="TestGame.cpp" />
     <ClCompile Include="TestQuad.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="GraphicsContext.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="TerrainTile.h" />
     <ClInclude Include="TestGame.h" />
