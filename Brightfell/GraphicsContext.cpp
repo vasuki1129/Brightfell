@@ -3,6 +3,7 @@
 
 void GraphicsContext::processFrame()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//Render all the drawables in the queue
@@ -19,8 +20,21 @@ void GraphicsContext::processFrame()
 		glEnableVertexAttribArray(1);
 
 		//setup the uniforms
+		glm::mat4 model = currentDraw->getMatrix();
+		glm::mat4 cameraMatrix = currentCam->getMatrix();
+
+		//send the uniforms
+		int selector;
+		selector = glGetUniformLocation(defaultShader->getId(), "model");
+		glUniformMatrix4fv(selector, 1, GL_FALSE, glm::value_ptr(model));
+
+		selector = glGetUniformLocation(defaultShader->getId(), "cameraMatrix");
+		glUniformMatrix4fv(selector, 1, GL_FALSE, glm::value_ptr(cameraMatrix));
+
 
 		//draw
+		glDrawElements(GL_TRIANGLES, currentDraw->indices.size(), GL_UNSIGNED_INT, (const void*)0);
+
 	}
 
 	glfwSwapBuffers(window);
@@ -57,8 +71,6 @@ GraphicsContext::GraphicsContext(int width, int height, void (*inputHandler)(GLF
 	glfwSetKeyCallback(window, inputHandler);
 
 	//Shader compilation	
-	defaultShader = new Shader(vertexShaderSource, fragmentShaderSource);
-	defaultShader->bind();
 
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -69,7 +81,8 @@ GraphicsContext::GraphicsContext(int width, int height, void (*inputHandler)(GLF
 	glGenBuffers(1, &ibo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 
-
+	defaultShader = new Shader(vertexShaderSource, fragmentShaderSource);
+	defaultShader->bind();
 }
 
 GraphicsContext::~GraphicsContext()

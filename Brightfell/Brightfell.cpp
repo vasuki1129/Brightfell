@@ -31,6 +31,11 @@ void renderLoop()
 
     TestQuad* quad = new TestQuad();
     context->registerDrawable(quad);
+    context->currentCam = new Camera();
+    context->currentCam->setPosition(glm::vec3(0.0f, 0.5f, 10.0f));
+    context->currentCam->setFov(70);
+    context->currentCam->setTarget(glm::vec3(0.0f, 0.0f, 0.0f));
+
     while (shouldRun)
     {
         context->processFrame();

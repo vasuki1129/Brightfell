@@ -8,20 +8,17 @@ class TestQuad : public Drawable
 {
 public:
 
-	float vertData[5*4] = {
-		-1.0f,-1.0f,0.0f,0.0f,0.0f,
-		1.0f,-1.0f,0.0f,1.0f,0.0f,
-		1.0f,1.0f,0.0f,1.0f,1.0f,
-		-1.0f,1.0f,0.0f,0.0f,1.0f
+	std::vector<Vertex> vertData = {
+		Vertex(-1.0f,-1.0f,0.0f,0.0f,0.0f),
+		Vertex(1.0f,-1.0f,0.0f,1.0f,0.0f),
+		Vertex(1.0f,1.0f,0.0f,1.0f,1.0f),
+		Vertex(-1.0f,1.0f,0.0f,0.0f,1.0f)
 	};
 
-	unsigned int indexData[3 * 2] = {
+	std::vector<unsigned int> indexData = {
 		0,1,2,
 		0,2,3
 	};
-
-	glm::mat4 position;
-
 	Texture* texture;
 
 	TestQuad();
