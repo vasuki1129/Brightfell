@@ -27,10 +27,13 @@ void GameModule::tick(double deltaTime)
 		fps = fps / fpsSmooth;
 	}
 
+	for (Tickable* t : objects)
+	{
+		t->logicTick(deltaTime);
+	}
 
-
-	std::cout << "Game FPS: " << fps << "\n";
-	std::cout << "Game Delta: " << deltaTime << "\n";
+	//std::cout << "Game FPS: " << fps << "\n";
+	//std::cout << "Game Delta: " << deltaTime << "\n";
 
 	
 
@@ -39,4 +42,9 @@ void GameModule::tick(double deltaTime)
 void GameModule::gameEnd()
 {
 
+}
+
+void GameModule::registerObject(Tickable* obj)
+{
+	objects.push_back(obj);
 }

@@ -43,9 +43,7 @@ const std::string fragmentShaderSource =
 struct Shader
 {
 private:
-	unsigned short DEBUG = 0;
 	unsigned int shaderId;
-
 	unsigned int compileShader(std::string source, unsigned int type);
 
 public:
