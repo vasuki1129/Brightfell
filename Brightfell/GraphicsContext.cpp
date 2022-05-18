@@ -29,16 +29,22 @@ void GraphicsContext::processFrame()
 
 	}
 
-	glfwSwapBuffers(window);
-	glfwPollEvents();
-
 	double MousePositionX, MousePositionY;
 
 	glfwGetCursorPos(window, &MousePositionX, &MousePositionY);
 
-	currentCam->rotate(glm::vec3((MousePositionX - lastMousePositionX), (MousePositionY - lastMousePositionY),0));
+	float sens = 0.1f;
+
+	currentCam->rotate(glm::vec3(sens * (MousePositionX - lastMousePositionX), 0, sens * (MousePositionY - lastMousePositionY)));
 	lastMousePositionX = MousePositionX;
 	lastMousePositionY = MousePositionY;
+
+
+
+	glfwSwapBuffers(window);
+	glfwPollEvents();
+
+
 
 
 	

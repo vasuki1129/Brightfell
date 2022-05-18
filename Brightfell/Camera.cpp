@@ -1,10 +1,6 @@
 #include "Camera.h"
 
 
-void logicTick(float dTime)
-{
-
-}
 
 glm::mat4 Camera::getMatrix()
 {
@@ -64,7 +60,7 @@ void Camera::logicTick(float dTime)
 
 void Camera::rotate(glm::vec3 amt)
 {
-    rotation = rotation * glm::quat(amt);
+    rotation = rotation + glm::quat(amt);
 }
 
 glm::vec3 Camera::getForwardVector()
